@@ -75,20 +75,6 @@ void AccountService::Login(::google::protobuf::RpcController *controller,
     response->set_is_success(true);
     response->set_id(user.GetId());
     response->set_name(user.GetName());
-
-    // // 查询离线消息
-    // std::vector<std::string> offlineMsg = _offlineMsg.OfflineMsgQuery(id);
-    // for (const auto &msg : offlineMsg)
-    // {
-    //     response->add_offline_msg(msg);
-    // }
-    
-    // // 删除离线消息
-    // if (!offlineMsg.empty())
-    // {
-    //     _offlineMsg.OfflineMsgRemove(id);
-    // }
-
     // 调用完成回调
     done->Run();
 }
