@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package Interface_;
+
+message UnifiedMessage {
+    // 通用字段
+    int32 id = 1;                          // 用户ID或群组ID
+    int32 friendid = 2;                    // 朋友ID或额外的ID
+    int32 group_id = 3;                    // 群组ID
+    int32 to_user_id = 4;                  // 发送对象ID
+    int32 from_user_id = 5;                // 发送者ID
+    bytes name = 6;                        // 用户名或群组名
+    bytes password = 7;                    // 用户密码
+    bytes role = 8;                        // 角色信息
+    bytes state = 9;                       // 状态信息
+    bytes group_name = 10;                 // 群组名
+    bytes group_desc = 11;                 // 群组描述
+    bytes msg = 12;                        // 消息内容
+    bytes time = 13;                       // 时间戳
+    bytes user_name = 14;                  // 用户名
+    bytes request_msg = 15;                // 请求消息
+    bytes response_msg = 16;               // 响应消息
+    bytes type = 17;                       // 消息类型
+    bool is_success = 18;                  // 操作是否成功
+    repeated int32 friends = 19;           // 好友ID列表
+    repeated bytes offline_msg = 20;       // 离线消息列表
+    repeated UserInfo users = 21;          // 用户信息列表
+    repeated GroupInfo groups = 22;        // 群组信息列表
+    repeated FriendInfo friends_info = 23; // 好友信息列表
+
+    // 嵌套消息
+    message UserInfo {
+        int32 id = 1;
+        bytes name = 2;
+        bytes role = 3;
+        bytes state = 4;
+    }
+
+    message GroupInfo {
+        int32 group_id = 1;
+        bytes group_name = 2;
+        bytes group_desc = 3;
+        repeated UserInfo users = 4;
+    }
+
+    message FriendInfo {
+        int32 id = 1;
+        bytes name = 2;
+        bytes state = 3;
+    }
+
+    message User {
+        int32 id = 1;
+        bytes name = 2;
+        bytes password = 3;
+        repeated int32 friends = 4;
+        repeated bytes offline_msg = 5;
+    }
+}

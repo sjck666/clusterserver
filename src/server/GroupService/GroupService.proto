@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package GroupService_;
+
+
+option cc_generic_services = true;
+
+message AddGroupRequest
+{
+    int32 userid = 1;
+    int32 group_id = 2;
+    bytes role = 3;
+}
+
+message AddGroupResponse
+{
+    int32 group_id = 1;
+    bool success = 2;
+    bytes msg = 3;
+}
+
+message CreateGroupRequest
+{
+    int32 userid = 1;
+    bytes group_name = 2;
+    bytes group_desc = 3;
+}
+
+message CreateGroupResponse
+{
+    int32 group_id = 1;
+    bool success = 2;
+    bytes msg = 3;
+}
+
+message QuitGroupRequest
+{
+    int32 userid = 1;
+    int32 group_id = 2;
+}
+
+message QuitGroupResponse
+{
+    int32 group_id = 1;
+    bool success = 2;
+    bytes msg = 3;
+}
+
+
+message GetGroupUsersRequest
+{
+    int32 group_id = 1;
+    int32 userid = 2;
+}
+
+message UserId
+{
+    int32 id = 1;
+}
+message GetGroupUsersResponse
+{
+    repeated UserId users = 1;
+    bool success = 2;
+    bytes msg = 3;
+}
+
+message  UserInfo
+{
+    int32 id = 1;
+    bytes name = 2;
+    bytes role = 3;
+    bytes state = 4;
+}
+
+message GroupInfo
+{
+    int32 group_id = 1;
+    bytes group_name = 2;
+    bytes group_desc = 3;
+    repeated UserInfo users = 4;
+}
+
+message GroupListRequest
+{
+    int32 userid = 1;
+}
+
+message GroupListResponse
+{
+    repeated GroupInfo groups = 1;
+    bool success = 2;
+    bytes msg = 3;
+}
+
+service GroupServiceRpc
+{
+    rpc AddGroup (AddGroupRequest) returns (AddGroupResponse);
+    rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse);
+    rpc QuitGroup (QuitGroupRequest) returns (QuitGroupResponse);
+    rpc GetGroupUsers (GetGroupUsersRequest) returns (GetGroupUsersResponse);
+    rpc GroupList (GroupListRequest) returns (GroupListResponse);
+}
