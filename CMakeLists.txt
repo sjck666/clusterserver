@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-
+#项目名称
 project(MrChat)
 
 # 配置编译选项
