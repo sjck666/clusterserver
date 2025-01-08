@@ -15,6 +15,16 @@ include_directories(${PROJECT_SOURCE_DIR}/include/server/Interface)
 include_directories(${PROJECT_SOURCE_DIR}/include/server/user)
 include_directories(${PROJECT_SOURCE_DIR}/include/server/db)
 include_directories(${PROJECT_SOURCE_DIR}/include/server/redis)
+
+
+
+
+
+
+
+
+
+
 include_directories(${PROJECT_SOURCE_DIR}/include/server/proto)
 include_directories(${PROJECT_SOURCE_DIR}/include/server/AccountService)
 include_directories(${PROJECT_SOURCE_DIR}/include/server/offlinemsg)
